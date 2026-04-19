@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Display and Transform XML</title>
+    <script type="text/javascript">
+        function display() {
+            var xmlURL = "badges.xml";        // 考试时改远程地址
+            var xmlstyleURL = "badges.xsl";
+            var xmlDocument;
+            var xmlStyleSheet;
+            
+            try {
+                var request;
+                if (window.XMLHttpRequest) {
+                    request = new XMLHttpRequest();
+                } else {
+                    request = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                
+                request.open("GET", xmlURL, false);
+                request.send();
+                xmlDocument = request.responseXML;
+                
+                request.open("GET", xmlstyleURL, false);
+                request.send();
+                xmlStyleSheet = request.responseXML;
+                
+                if (window.ActiveXObject) {
+                    transformedXML = xmlDocument.transformNode(xmlStyleSheet);
+                    document.getElementById("output").innerHTML = transformedXML;
+                } else {
+                    var xsltProcessor = new XSLTProcessor();
+                    xsltProcessor.importStylesheet(xmlStyleSheet);
+                    transformedXML = xsltProcessor.transformToFragment(xmlDocument, document);
+                    document.getElementById("output").appendChild(transformedXML);
+                }
+                
+            } catch (err) {
+                alert('Your browser cannot handle this script');
+            }
+        }
+    </script>
+</head>
+<body onload="display()">
+    <div id="output"></div>
+</body>
+</html>

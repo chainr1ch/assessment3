@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE badges [
+    <!ELEMENT badges (badge*)>
+    <!ELEMENT badge (name, description, levels)>
+    <!ELEMENT name (#PCDATA)>
+    <!ELEMENT description (#PCDATA)>
+    <!ELEMENT levels (availability+)>
+    <!ELEMENT availability (#PCDATA)>
+    <!ATTLIST badge id ID #REQUIRED>
+    <!ATTLIST badge type (activity|development) "activity">
+    <!ATTLIST availability level (beaver|cub|scout) "beaver">
+]>
+<badges>
+    <badge id="s1" type="activity">
+        <name>Climbing</name>
+        <description>This badge is awarded to scouts who have shown a proficiency in climbing</description>
+        <levels>
+            <availability level="beaver">Not Available</availability>
+            <availability level="cub">Available</availability>
+            <availability level="scout">Available</availability>
+        </levels>
+    </badge>
+    
+    <badge id="s2" type="activity">
+        <name>Abseiling</name>
+        <description>This badge is awarded to scouts who have shown a proficiency in abseiling</description>
+        <levels>
+            <availability level="beaver">Not Available</availability>
+            <availability level="cub">Not Available</availability>
+            <availability level="scout">Available</availability>
+        </levels>
+    </badge>
+    
+    <badge id="s3" type="activity">
+        <name>Archery</name>
+        <description>This badge is awarded to scouts who have managed to show that they can use a modern bow in a safe manner</description>
+        <levels>
+            <availability level="beaver">Available</availability>
+            <availability level="cub">Available</availability>
+            <availability level="scout">Available</availability>
+        </levels>
+    </badge>
+    
+    <badge id="s6" type="development">
+        <name>Computing</name>
+        <description>This badge is awarded to scouts who have shown a proficiency in computing</description>
+        <levels>
+            <availability level="beaver">Available</availability>
+            <availability level="cub">Available</availability>
+            <availability level="scout">Available</availability>
+        </levels>
+    </badge>
+</badges>
